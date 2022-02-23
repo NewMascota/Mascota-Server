@@ -35,11 +35,11 @@ public class ReadyController {
     }
     /**
      * 준비하기 전체 질문 조회
-     * [GET] /readies/all/:userIdx/:petIdx
+     * [GET] /readies/questions/:userIdx/:petIdx
      * @return BaseResponse<List<GetReadyRes>>
      * */
     @ResponseBody
-    @GetMapping("/all/{userIdx}/{petIdx}")
+    @GetMapping("/questions/{userIdx}/{petIdx}")
     public BaseResponse<List<GetReadyRes>> getReady(@PathVariable("userIdx") int userIdx, @PathVariable("petIdx") int petIdx){
         // Get Users
         try{
@@ -59,11 +59,11 @@ public class ReadyController {
     }
     /**
      * 준비하기 답변 조회
-     * [GET] /readies/one/:userIdx/:readyAnswerIdx
+     * [GET] /readies/answers/:userIdx/:readyAnswerIdx
      * @return BaseResponse<List<GetOneReadyRes>>
      * */
     @ResponseBody
-    @GetMapping("/one/{userIdx}/{readyAnswerIdx}")
+    @GetMapping("/answers/{userIdx}/{readyAnswerIdx}")
     public BaseResponse<List<GetOneReadyRes>> getOneReady(@PathVariable("userIdx") int userIdx, @PathVariable("readyAnswerIdx") int readyAnswerIdx){
         // Get Users
         try{
@@ -84,11 +84,11 @@ public class ReadyController {
 
     /**
      * 준비하기 답변 작성 API
-     * [POST] /readies/one/answer/:userIdx/:petIdx/:readyQuestionIdx
+     * [POST] /readies/answers/:userIdx/:petIdx/:readyQuestionIdx
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PostMapping ("/one/answer/{userIdx}/{petIdx}/{readyQuestionIdx}")
+    @PostMapping ("/answers/{userIdx}/{petIdx}/{readyQuestionIdx}")
     public BaseResponse<String> createReadyAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("petIdx") int petIdx,@PathVariable("readyQuestionIdx") int readyQuestionIdx, @RequestBody PostReadyAnswer postReadyAnswer){
         try {
             //jwt에서 idx 추출.
@@ -110,11 +110,11 @@ public class ReadyController {
 
     /**
      * 준비하기 답변 수정 API
-     * [PATCH] /readies/one/answer/:userIdx/:readyAnswerIdx
+     * [PATCH] /readies/answers/:userIdx/:readyAnswerIdx
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PatchMapping("/one/answer/{userIdx}/{readyAnswerIdx}")
+    @PatchMapping("/answers/{userIdx}/{readyAnswerIdx}")
     public BaseResponse<String> modifyReadyAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("readyAnswerIdx") int readyAnswerIdx, @RequestBody PatchReadyAnswer patchReadyAnswer){
         try {
             //jwt에서 idx 추출.
@@ -136,11 +136,11 @@ public class ReadyController {
 
     /**
      * 준비하기 답변 삭제 API
-     * [PATCH] /readies/one/answer/:userIdx/:readyAnswerIdx/status
+     * [PATCH] /readies/answers/:userIdx/:readyAnswerIdx/status
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PatchMapping("/one/answer/{userIdx}/{readyAnswerIdx}/status")
+    @PatchMapping("/answers/{userIdx}/{readyAnswerIdx}/status")
     public BaseResponse<String> deleteReadyAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("readyAnswerIdx") int readyAnswerIdx, @RequestBody ReadyAnswerStatus ReadyAnswerStatus){
         try {
             //jwt에서 idx 추출.

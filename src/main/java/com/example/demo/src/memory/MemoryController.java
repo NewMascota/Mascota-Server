@@ -37,11 +37,11 @@ public class MemoryController {
 
     /**
      * 추억하기 전체 질문 조회 (답변하기 탭)
-     * [GET] /memories/all/notAnsweredMemories/:userIdx/:petIdx
+     * [GET] /memories/questions/unanswered/:userIdx/:petIdx
      * @return BaseResponse<List<GetNotAnsweredMemoryRes>>
      * */
     @ResponseBody
-    @GetMapping("/all/notAnsweredMemories/{userIdx}/{petIdx}")
+    @GetMapping("/questions/unanswered/{userIdx}/{petIdx}")
     public BaseResponse<List<GetNotAnsweredMemoryRes>> getNotAnsweredMemory(@PathVariable("userIdx") int userIdx, @PathVariable("petIdx") int petIdx){
         // Get Users
         try{
@@ -62,11 +62,11 @@ public class MemoryController {
 
     /**
      * 추억하기 전체 질문 조회 (모아보기 탭) (질문인덱스순, 최신순, 오래된순)
-     * [GET] /memories/all/answeredMemories/:userIdx/:petIdx
+     * [GET] /memories/questions/answered/:userIdx/:petIdx
      * @return BaseResponse<List<GetAnsweredMemoryRes>>
      * */
     @ResponseBody
-    @GetMapping("/all/answeredMemories/{userIdx}/{petIdx}")
+    @GetMapping("/questions/answered/{userIdx}/{petIdx}")
     public BaseResponse<List<GetAnsweredMemoryRes>> getAnsweredMemory(@PathVariable("userIdx") int userIdx, @PathVariable("petIdx") int petIdx, @RequestParam(required = false) String order){
         // Get Users
         try{
@@ -87,11 +87,11 @@ public class MemoryController {
 
     /**
      * 추억하기 답변 조회
-     * [GET] /memories/one/:userIdx/:memoryAnswerIdx
+     * [GET] /memories/answers/:userIdx/:memoryAnswerIdx
      * @return BaseResponse<List<GetOneMemoryRes>>
      * */
     @ResponseBody
-    @GetMapping("/one/{userIdx}/{memoryAnswerIdx}")
+    @GetMapping("/answers/{userIdx}/{memoryAnswerIdx}")
     public BaseResponse<List<GetOneMemoryRes>> getOneMemory(@PathVariable("userIdx") int userIdx, @PathVariable("memoryAnswerIdx") int memoryAnswerIdx){
         // Get Users
         try{
@@ -112,11 +112,11 @@ public class MemoryController {
 
     /**
      * 추억하기 답변 작성 API
-     * [POST] /memories/one/answer/:userIdx/:petIdx/:memoryQuestionIdx
+     * [POST] /memories/answers/:userIdx/:petIdx/:memoryQuestionIdx
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PostMapping("/one/answer/{userIdx}/{petIdx}/{memoryQuestionIdx}")
+    @PostMapping("/answers/{userIdx}/{petIdx}/{memoryQuestionIdx}")
     public BaseResponse<String> createMemoryAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("petIdx") int petIdx,@PathVariable("memoryQuestionIdx") int memoryQuestionIdx, @RequestBody PostMemoryAnswer postMemoryAnswer){
         try {
             //jwt에서 idx 추출.
@@ -138,11 +138,11 @@ public class MemoryController {
 
     /**
      * 추억하기 답변 수정 API
-     * [PATCH] /memories/one/answer/:userIdx/:memoryAnswerIdx
+     * [PATCH] /memories/answers/:userIdx/:memoryAnswerIdx
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PatchMapping("/one/answer/{userIdx}/{memoryAnswerIdx}")
+    @PatchMapping("/answers/{userIdx}/{memoryAnswerIdx}")
     public BaseResponse<String> modifyMemoryAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("memoryAnswerIdx") int memoryAnswerIdx, @RequestBody PatchMemoryAnswer patchMemoryAnswer){
         try {
             //jwt에서 idx 추출.
@@ -164,11 +164,11 @@ public class MemoryController {
 
     /**
      * 추억하기 답변 삭제 API
-     * [PATCH] /memories/one/answer/:userIdx/:memoryAnswerIdx/status
+     * [PATCH] /memories/answers/:userIdx/:memoryAnswerIdx/status
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PatchMapping("/one/answer/{userIdx}/{memoryAnswerIdx}/status")
+    @PatchMapping("/answers/{userIdx}/{memoryAnswerIdx}/status")
     public BaseResponse<String> deleteMemoryAnswer(@PathVariable("userIdx") int userIdx,@PathVariable("memoryAnswerIdx") int memoryAnswerIdx, @RequestBody MemoryAnswerStatus MemoryAnswerStatus){
         try {
             //jwt에서 idx 추출.

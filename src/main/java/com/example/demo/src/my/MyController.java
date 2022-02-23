@@ -14,7 +14,7 @@ import static com.example.demo.utils.ValidationRegex.*;
 
 
 @RestController
-@RequestMapping("/myPages")
+@RequestMapping("/mypages")
 public class MyController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -33,7 +33,7 @@ public class MyController {
 
     /**
      * 마이페이지 전체 조회
-     * [GET] /myPages/:userIdx
+     * [GET] /mypages/:userIdx
      * @return BaseResponse<List<GetMyRes>>
      * */
     @ResponseBody
@@ -58,11 +58,11 @@ public class MyController {
 
     /**
      * 마이페이지 개인정보 조회
-     * [GET] /myPages/myInfo/:userIdx
+     * [GET] /mypages/user-info/:userIdx
      * @return BaseResponse<GetMyInfoRes>
      * */
     @ResponseBody
-    @GetMapping("/myInfo/{userIdx}")
+    @GetMapping("/user-info/{userIdx}")
     public BaseResponse<GetMyInfoRes> getMyInfo(@PathVariable("userIdx") int userIdx){
         // Get Users
         try{
@@ -83,11 +83,11 @@ public class MyController {
 
     /**
      * 마이페이지 비밀번호 변경
-     * [PATCH] /myPages/myInfo/password/:userIdx
+     * [PATCH] /mypages/user-info/password/:userIdx
      * @return BaseResponse<String>
      * */
     @ResponseBody
-    @PatchMapping("/myInfo/password/{userIdx}")
+    @PatchMapping("/user-info/password/{userIdx}")
     public BaseResponse<String> modifyPassword(@PathVariable("userIdx") int userIdx, @RequestBody MyPassword myPassword){
         try{
             //jwt에서 idx 추출.
@@ -127,11 +127,11 @@ public class MyController {
 
     /**
      * 책 표지 수정
-     * [PATCH] /myPages/bookInfo/:userIdx
+     * [PATCH] /mypages/book-info/:userIdx
      * @return BaseResponse<String>
      * */
     @ResponseBody
-    @PatchMapping("/bookInfo/{userIdx}")
+    @PatchMapping("/book-info/{userIdx}")
     public BaseResponse<String> modifyMyBook(@PathVariable("userIdx") int userIdx, @RequestBody MyBook myBook){
         try{
             //jwt에서 idx 추출.
@@ -170,11 +170,11 @@ public class MyController {
 
     /**
      * 반려동물 프로필 수정
-     * [PATCH] /myPages/petInfo/:userIdx/:petIdx
+     * [PATCH] /mypages/pet-info/:userIdx/:petIdx
      * @return BaseResponse<String>
      * */
     @ResponseBody
-    @PatchMapping("/petInfo/{userIdx}/{petIdx}")
+    @PatchMapping("/pet-info/{userIdx}/{petIdx}")
     public BaseResponse<String> modifyMyPet(@PathVariable("userIdx") int userIdx,@PathVariable("petIdx") int petIdx, @RequestBody MyPet myPet){
         try{
             //jwt에서 idx 추출.
@@ -211,11 +211,11 @@ public class MyController {
 
     /**
      * 동물 프로필 삭제 API
-     * [PATCH] /myPages/petInfo/:userIdx/:petIdx/status
+     * [PATCH] /mypages/pet-info/:userIdx/:petIdx/status
      * @return BaseResponse<String>
      */
     @ResponseBody
-    @PatchMapping("/petInfo/{userIdx}/{petIdx}/status") // (PATCH) 127.0.0.1:9090/app/restaurants/:userIdx/reviews/:reviewIdx/status
+    @PatchMapping("/pet-info/{userIdx}/{petIdx}/status") // (PATCH) 127.0.0.1:9090/app/restaurants/:userIdx/reviews/:reviewIdx/status
     public BaseResponse<String> deleteMyPet(@PathVariable("userIdx") int userIdx, @PathVariable("petIdx") int petIdx, @RequestBody PetStatus petStatus){
         try{
             //jwt에서 idx 추출.
