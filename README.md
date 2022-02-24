@@ -1,5 +1,8 @@
 # Mascota 
 
+👉 Base URL : https://mascota.kr
+
+
 ## :octocat: api 명세
 
 
